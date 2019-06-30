@@ -70,8 +70,6 @@ function izbrisiJelo(){
     }
 }
 
-
-// funkije
 function pogledajJelo(){
     global $conn;
 
