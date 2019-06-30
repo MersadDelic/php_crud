@@ -1,0 +1,127 @@
+body{
+    width:90%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    background-image: url("image.jpg")
+}
+table{
+    width: 100%;
+}
+table, td, th{
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+td, th{
+    background-color: white;
+    padding: 10px 5px;
+    text-align: center;
+}
+th{
+    background-color: rgb(151, 162, 165);
+}
+tr:hover {
+    background-color: #b7e7b3;
+}
+
+.pl-15{
+    padding-left: 15px;
+}
+.noborders{
+    border: 0px;
+}
+.addbutton{
+    line-height: 20px;
+    background-color: #b85c64;
+    border-color: #4cae4c;
+    padding: 10px 10px;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.addbutton:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+.viewbutton{
+    line-height: 15px;
+    background-color: #73879C;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.viewbutton:hover {
+    color: #fff;
+    background-color: #565b5f;
+    
+}
+
+.updatebutton{
+    line-height: 15px;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.updatebutton:hover{
+    background-color: #286090;
+    border-color: #204d74;
+}
+
+.deletebutton{
+    line-height: 15px;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.deletebutton:hover {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #c70c05;
+}
+.backbutton{
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.backbutton:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+input{
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #a7a2a2;
+    width: 100%;
+     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+select {
+    padding: 5px;
+    width: 10%;
+    border-radius: 3px;
+}
+.auto{
+    width: auto !important;
+    margin-bottom: 0px !important;
+}
+.login-form{
+    width: 400px;
+    margin: auto;
+}
+.error{
+    color: red;
+} 
