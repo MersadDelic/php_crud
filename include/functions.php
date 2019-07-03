@@ -11,7 +11,7 @@ function prikaziJela(){
     if (mysqli_num_rows($rez) > 0) {
         while ($row = mysqli_fetch_assoc($rez)) {
        echo '<tr>
-                <td>'.$row['id'].'</td>
+                
                 <td>'.$row['naziv'].'</td>
                 <td>'.$row['vrsta'].'</td>
                 <td>'.$row['opis'].'</td>
@@ -20,9 +20,9 @@ function prikaziJela(){
                 
                 
                 <td>
-                    <a class="viewbutton" href="pogledaj_jelo.php?view='.$row['id'].'">Pogledaj</a> 
-                    <a class="updatebutton" href="izmjeni_jelo.php?update='.$row['id'].'">Izmijeni</a> 
-                    <a class="deletebutton" href="index.php?delete='.$row['id'].'">Izbrisi</a> 
+                    <a class="btn btn-primary" href="pogledaj_jelo.php?view='.$row['id'].'">Pogledaj</a> 
+                    <a class="btn btn-secondary" href="izmjeni_jelo.php?update='.$row['id'].'">Izmijeni</a> 
+                    <a class="btn btn-danger" href="index.php?delete='.$row['id'].'">Izbriši</a> 
                 </td>
             </tr>';
         }
@@ -41,10 +41,10 @@ function dodajJelo(){
         $opis      = $_POST['opis'];
         $sastojci  = $_POST['sastojci'];
         $postupak  = $_POST['postupak'];
-        $slika     = $_POST['slika'];
+        $komentar     = $_POST['komentar'];
         
-        $sql = "INSERT INTO jela (naziv, vrsta, opis, sastojci, postupak, slika) 
-                VALUES ('$naziv', '$vrsta', '$opis', '$sastojci', '$postupak','$slika')";
+        $sql = "INSERT INTO jela (naziv, vrsta, opis, sastojci, postupak, komentar) 
+                VALUES ('$naziv', '$vrsta', '$opis', '$sastojci', '$postupak','$komentar')";
 
         mysqli_set_charset($conn,"utf8");       
         $rez = mysqli_query($conn, $sql);
@@ -70,6 +70,8 @@ function izbrisiJelo(){
     }
 }
 
+
+// funkcije
 function pogledajJelo(){
     global $conn;
 
@@ -104,12 +106,12 @@ function pogledajJelo(){
     echo 
      '<tr>
         <th class="noborders">Postupak pravljenja</th>
-        <td class="noborders pl-15">'.$row['postupak'].'</td>
+        <td class="noborders pl-15">'.$row['postupak'].'</td>   
      <tr>';
     echo 
     '<tr>
-        <th class="noborders">Izgled kolača</th>
-        <td class="noborders pl-15">'.$row['slika'].'</td>
+        <th class="noborders">Komentar</th>
+        <td class="noborders pl-15">'.$row['komentar'].'</td> 
      <tr>';
 }
 }

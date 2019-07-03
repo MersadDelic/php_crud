@@ -4,17 +4,17 @@
     $id = $_GET['update'];
     include 'include/konekcija.php';
  
-    $sql = "SELECT * FROM kontakti WHERE id=$id";
+    $sql = "SELECT * FROM jela WHERE id=$id";
     mysqli_set_charset($conn,"utf8");
     $rez = mysqli_query($conn, $sql);
     
     while ($row = mysqli_fetch_assoc($rez)){
-        $imeprezime = $row['ime'];
-        $adresa     = $row['adresa'];
-        $grad       = $row['grad'];
-        $email      = $row['email'];
-        $spol       = $row['spol'];
-        $telefon    = $row['telefon'];
+        $naziv     = $row['naziv'];
+        $vrsta     = $row['vrsta'];
+        $opis      = $row['opis'];
+        $sastojci  = $row['sastojci'];
+        $postupak  = $row['postupak'];
+        $komentar     = $row['komentar'];
     }
 } 
 
@@ -22,15 +22,15 @@
     if(isset($_POST['Update'])){
     include 'include/konekcija.php';
     
-    $update_id  = $_POST['id'];
-    $imeprezime = $_POST['imeprezime'];
-    $adresa     = $_POST['adresa'];
-    $grad       = $_POST['grad'];
-    $email      = $_POST['email'];
-    $spol       = $_POST['spol'];
-    $telefon    = $_POST['telefon'];
+    $update_id = $_POST['id'];
+    $naziv     = $_POST['naziv'];
+    $vrsta     = $_POST['vrsta'];
+    $opis      = $_POST['opis'];
+    $sastojci  = $_POST['sastojci'];
+    $postupak  = $_POST['postupak'];
+    $komentar     = $_POST['komentar'];
     
-    $sql = "UPDATE kontakti SET ime='$imeprezime', adresa='$adresa', grad='$grad', email='$email', spol='$spol', telefon='$telefon' WHERE id=$update_id";
+    $sql = "UPDATE jela SET naziv='$naziv', vrsta='$vrsta', opis='$opis', sastojci='$sastojci', postupak='$postupak', komentar='$komentar' WHERE id=$update_id";
 
     mysqli_set_charset($conn,"utf8");
 
@@ -42,7 +42,7 @@
 
     }else{
 
-        echo "<p style='color:green; margin-top:10px;'>Kontakt uspješno izmijenjen.</p>";
+        echo "<p style='color:green; margin-top:10px;'>Jelo uspješno izmijenjeno.</p>";
 
     }
 }
@@ -54,48 +54,44 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Imenik - izmjeni kontakt</title>
+    <title>Izmjena jela</title>
     <meta name="author" content="Mersad Delić">
-    <link rel="stylesheet" type="text/css" href="css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h2>Izmjeni kontakt</h2>
-    <form action="izmjeni_kontakt.php" method="POST">
-        <table border="0" cellpadding="0" cellspacing="0" class="noborders">
+    <h2>Izmjeni jelo</h2>
+    <form action="izmjeni_jelo.php" method="POST">
+        <table border="0" cellpadding="0" cellspacing="0" class="table table-bordered table-dark">
             <tr>
-                <td class="noborders">Ime i prezime</td>
-                <td class="noborders"><input type="text" name="imeprezime" value="<?php echo $imeprezime; ?>"></td>
+                <td class="noborders">Naziv</td>
+                <td class="noborders"><input type="text" name="naziv" value="<?php echo $naziv; ?>"></td>
             </tr>
             <tr>
-                <td class="noborders">Adresa</td>
-                <td class="noborders"><input type="text" name="adresa" value="<?php echo $adresa; ?>"></td>
+                <td class="noborders">Vrsta</td>
+                <td class="noborders"><input type="text" name="vrsta" value="<?php echo $vrsta; ?>"></td>
                 </tr>
             <tr>
-                <td class="noborders">Grad</td>
-                <td class="noborders"><input type="text" name="grad" value="<?php echo $grad; ?>"></td>
+                <td class="noborders">Kratak opis</td>
+                <td class="noborders"><input type="text" name="opis" value="<?php echo $opis; ?>"></td>
             </tr>
             <tr>
-                <td class="noborders">Email</td>
-                <td class="noborders"><input type="email" name="email" value="<?php echo $email; ?>"></td>
+                <td class="noborders">Sastojci</td>
+                <td class="noborders"><input type="text" name="sastojci" value="<?php echo $sastojci; ?>"></td>
             </tr>
             <tr>
-                <td class="noborders">Spol</td>
-                <td class="noborders">
-                    <select name="spol" value="<?php echo $spol; ?>">
-                        <option value="M" <?php if($spol=='M') echo "selected"; ?>>M</option>
-                        <option value="Ž" <?php if($spol=='Ž') echo "selected"; ?>>Ž</option>
-                    </select>
-                </td>
+                <td class="noborders">Postupak</td>
+                <td class="noborders"><textarea rows="11" cols="97" name="postupak" ><?php echo $postupak ?></textarea></td>
             </tr>
             <tr>
-                <td class="noborders">Telefon</td>
-                <td class="noborders"><input type="text" name="telefon" value="<?php echo $telefon; ?>"></td>
+                <td class="noborders">Komentar</td>
+                <td class="noborders"><input type="text"  name="komentar" value="<?php echo $komentar; ?>"></td>
             </tr>
             <tr>
                 <td colspan="2" class="noborders">
                     <input type="hidden" name="id" value="<?php echo $id; ?>" />
-                    <input type="submit" class="addbutton auto" name="Update" value="Izmjeni" /> 
-                    <a class="backbutton" href="index.php">Početna</a>
+                    <input type="submit" class="btn btn-primary" name="Update" value="Spasi izmjene" /> 
+                    <a class="btn btn-warning" href="index.php">Početna</a>
                 </td>
             </tr>
         </table>
